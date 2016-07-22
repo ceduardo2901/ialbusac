@@ -20,7 +20,7 @@ namespace ialbusac.Sunat1 {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="status")]
         ialbusac.Sunat1.getStatusResponse getStatus(ialbusac.Sunat1.getStatusRequest request);
-        
+       
         [System.ServiceModel.OperationContractAttribute(Action="urn:getStatus", ReplyAction="*")]
         System.Threading.Tasks.Task<ialbusac.Sunat1.getStatusResponse> getStatusAsync(ialbusac.Sunat1.getStatusRequest request);
         
