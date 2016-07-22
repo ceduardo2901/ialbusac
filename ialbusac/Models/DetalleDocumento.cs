@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ialbusac.Models
+namespace ialbusac.ialbusac.Models
 {
     [Serializable]
     public class DetalleDocumento : ICloneable

@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.Data.OracleClient;
 using System.Windows.Forms;
+
+
 
 namespace Business
 {
     class Boleta
     {
-
+        var doc = (DocumentoElectronico)_documento.Clone();
         OracleConnection Cn = new OracleConnection();
         public Boolean CargaCliente(String sidCli, string Sidsucursal)
         {
@@ -95,6 +94,7 @@ namespace Business
             if (Dr.HasRows)
             {
                 Dr.Read();
+
               /*  Cliente = Dr["CLIENTEID"].ToString();
                 UsuarioID = Dr["USUARIOID"].ToString();
                 ZonaId = Dr["ZONAID"].ToString();
