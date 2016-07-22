@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.OracleClient;
 using System.Windows.Forms;
-
-
+using ialbusacpr.ialbusac.Models;
 
 namespace Business
 {
     class Boleta
     {
-      //  var doc = (DocumentoElectronico)_documento.Clone();
+        private readonly DocumentoElectronico _documento;
         OracleConnection Cn = new OracleConnection();
         public Boolean CargaCliente(String sidCli, string Sidsucursal)
         {
+            var doc = (DocumentoElectronico)_documento.Clone();
             if (Cn.State == ConnectionState.Closed)
             {
                 Cn.ConnectionString = ClsConexion.sConex; Cn.Open();
@@ -79,7 +79,7 @@ namespace Business
    + " tipo_cambio tc WHERE p.pagoid = d.pagoid(+)  AND d.tipodocumentoid = td.tipodocumentoid(+)  AND td.tipo_doc = td2.id_tipodoc(+)"
      + "   AND td.cajaid = c.cajaid(+)  AND p.creditoid = cr.creditoid(+)  AND cr.clienteid = cl.clienteid(+) and trunc(d.fechareal) = trunc(tc.fechaingreso)  "
      + "     AND to_number(to_char(d.fecha, 'yyyy')) = '2016'  AND to_number(to_char(d.fecha, 'mm')) = '07'  AND c.seriedocumentos is not null  "
-     // and  d.numero='2247370'
+     +" and  d.numero='2247370'  "
      + "    order by d.documentoid asc ";
 
             OracleCommand Cmd = new OracleCommand();
@@ -95,6 +95,8 @@ namespace Business
             {
                 Dr.Read();
 
+                doc.FechaEmision = Dr["IssueDate"].ToString();
+                doc.Emisor.NombreLegal = Dr[" RegistrationName"].ToString();
               /*  Cliente = Dr["CLIENTEID"].ToString();
                 UsuarioID = Dr["USUARIOID"].ToString();
                 ZonaId = Dr["ZONAID"].ToString();
