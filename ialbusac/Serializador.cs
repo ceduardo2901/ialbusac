@@ -8,7 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Ionic.Zip;
 
-namespace ErickOrlando.FirmadoSunat
+namespace ialbusacpr.ialbusac
 {
     public class Serializador
     {

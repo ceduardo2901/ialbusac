@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+namespace ialbusacpr.ialbusac.Estructuras
 
-namespace ialbusac.Estructuras
+
 {
     [Serializable]
     public class VoidedDocumentsLine

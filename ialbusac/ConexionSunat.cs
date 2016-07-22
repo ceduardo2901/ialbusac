@@ -2,7 +2,7 @@
 using System.ServiceModel;
 using ialbusac.Sunat1;
 
-namespace ialbusac
+namespace ialbusacpr.ialbusac
 {
     /// <summary>
     /// Clase para la conexión con el WS de SUNAT

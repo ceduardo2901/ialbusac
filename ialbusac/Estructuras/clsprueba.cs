@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ialbusac.Estructuras
+namespace ialbusacpr.ialbusac.Estructuras
 {
     class clsprueba
     {

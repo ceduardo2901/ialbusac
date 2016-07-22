@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ialbusac.Estructuras
+namespace ialbusacpr.ialbusac.Estructuras
 {
     [Serializable]
     public class SUNATRetentionDocumentReference

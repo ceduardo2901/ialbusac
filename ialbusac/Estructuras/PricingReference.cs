@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ialbusac.Estructuras
+namespace ialbusacpr.ialbusac.Estructuras
 {
     [Serializable]
     public class PricingReference

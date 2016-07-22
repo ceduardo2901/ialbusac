@@ -4,7 +4,7 @@ using System.ServiceModel.Dispatcher;
 using System.Xml;
 using Microsoft.Web.Services3.Security.Tokens;
 
-namespace ialbusac
+namespace ialbusacpr.ialbusac
 {
     public class PasswordDigestMessageInspector : IClientMessageInspector
     {

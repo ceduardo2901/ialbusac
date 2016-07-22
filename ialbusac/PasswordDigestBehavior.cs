@@ -2,7 +2,7 @@
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace ialbusac
+namespace ialbusacpr.ialbusac
 {
     public class PasswordDigestBehavior : IEndpointBehavior
     {

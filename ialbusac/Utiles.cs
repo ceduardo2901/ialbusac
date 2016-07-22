@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace  ialbusac
+namespace ialbusacpr.ialbusac
 {
     public static class Utiles
     {

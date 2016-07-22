@@ -13,7 +13,7 @@ namespace Business
 {
     class Boleta
     {
-        var doc = (DocumentoElectronico)_documento.Clone();
+      //  var doc = (DocumentoElectronico)_documento.Clone();
         OracleConnection Cn = new OracleConnection();
         public Boolean CargaCliente(String sidCli, string Sidsucursal)
         {

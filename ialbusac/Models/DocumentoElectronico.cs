@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace ialbusac.ialbusac.Models
+namespace ialbusacpr.ialbusac.Models
 {
     [Serializable]
     public class DocumentoElectronico : ICloneable

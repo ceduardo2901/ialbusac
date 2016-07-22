@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace ialbusac.Estructuras
+namespace ialbusacpr.ialbusac.Estructuras
 {
     public class DebitNote : IXmlSerializable
     {

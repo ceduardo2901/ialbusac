@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using ialbusac.Estructuras;
+using ialbusacpr.ialbusac.Models;
+using ialbusacpr.ialbusac.Estructuras;
 
-
-namespace ialbusac
+namespace ialbusacpr.ialbusac
 {
     public static class Generador
     {

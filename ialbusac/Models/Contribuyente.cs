@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ialbusac.ialbusac.Models
+namespace ialbusacpr.ialbusac.Models
 {
     [Serializable]
     public class Contribuyente
