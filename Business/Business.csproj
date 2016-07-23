@@ -30,7 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ialbusac">
+    <Reference Include="ialbusac, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ialbusac\bin\Debug\ialbusac.dll</HintPath>
     </Reference>
     <Reference Include="System" />

@@ -5,21 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.OracleClient;
-using System.Windows.Forms;
+using System.Collections.ObjectModel;
 using ialbusacpr.ialbusac.Models;
+using ialbusacpr.ialbusac;
 
-namespace Business
+
+namespace ialbusacpr.Business
 {
-    class Boleta
+    [Serializable]
+   public class Boleta: ICloneable
     {
-        private readonly DocumentoElectronico _documento;
-        OracleConnection Cn = new OracleConnection();
-        public Boolean CargaCliente(String sidCli, string Sidsucursal)
+        //private readonly DocumentoElectronico _documento;
+       
+         
+     public Boolean CargaCliente(DocumentoElectronico doc)
         {
-            var doc = (DocumentoElectronico)_documento.Clone();
+            OracleConnection Cn = new OracleConnection();
+            
+            // var doc = (DocumentoElectronico)_documento.Clone();
             if (Cn.State == ConnectionState.Closed)
             {
-                Cn.ConnectionString = ClsConexion.sConex; Cn.Open();
+                Cn.ConnectionString = "Data Source=maximus;Persist Security Info=True;User ID=db_prueba;Password=db_prueba;Unicode=True";
+                Cn.Open();
             }
             String sSQL = " SELECT d.documentoid,  (to_char(d.fecha, 'yyyy') || '-' || to_char(d.fecha, 'mm') || '-' || to_char(d.fecha, 'dd')) as IssueDate, "//- 1 Fecha de emision
  + " 'INVERSIONES ALBUSA SAC' as RegistrationName, "// 2 Apellidos nombres  denominacion o razon social
@@ -90,13 +97,13 @@ namespace Business
             OracleDataReader Dr;
 
             Dr = Cmd.ExecuteReader();
-
+           
             if (Dr.HasRows)
             {
                 Dr.Read();
 
                 doc.FechaEmision = Dr["IssueDate"].ToString();
-                doc.Emisor.NombreLegal = Dr[" RegistrationName"].ToString();
+                doc.Emisor.NombreLegal = Dr["RegistrationName"].ToString();
               /*  Cliente = Dr["CLIENTEID"].ToString();
                 UsuarioID = Dr["USUARIOID"].ToString();
                 ZonaId = Dr["ZONAID"].ToString();
@@ -132,5 +139,11 @@ namespace Business
                 return false;
             }
         }
+
+        public object Clone()
+        {
+            return Utiles.Copia(this);
+        }
+
     }
 }

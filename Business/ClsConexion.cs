@@ -10,7 +10,7 @@ using System.Net;
 using System.Configuration;
 using System.Data.OracleClient;
 
-namespace Business
+namespace ialbusacpr.Business
 {
     class ClsConexion
     {
