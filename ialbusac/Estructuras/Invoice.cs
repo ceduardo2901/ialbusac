@@ -212,8 +212,7 @@ namespace ialbusacpr.ialbusac.Estructuras
             writer.WriteStartElement("cac:AccountingSupplierParty");
 
             writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountID);
-            writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingSupplierParty.AdditionalAccountID.ToString());
+            writer.WriteElementString("cbc:AdditionalAccountID", AccountingSupplierParty.AdditionalAccountID.ToString());
 
             #region Party
             writer.WriteStartElement("cac:Party");

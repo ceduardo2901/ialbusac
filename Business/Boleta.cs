@@ -104,32 +104,71 @@ namespace ialbusacpr.Business
 
                 doc.FechaEmision = Dr["IssueDate"].ToString();
                 doc.Emisor.NombreLegal = Dr["RegistrationName"].ToString();
-              /*  Cliente = Dr["CLIENTEID"].ToString();
-                UsuarioID = Dr["USUARIOID"].ToString();
-                ZonaId = Dr["ZONAID"].ToString();
-                DistritoId = Dr["DISTRITOID"].ToString();
-                CodCliente = Dr["CODIGOCLIENTE"].ToString();
-                Nombre = Dr["NOMBRECLIENTE"].ToString();
-                Apellido = Dr["APELLIDOCLIENTE"].ToString();
-                Ruc = Dr["RUC"].ToString();
-                Domicilio = Dr["DOMICILIO"].ToString();
-                Ciudad = Dr["CIUDAD"].ToString();
-                Dni = Dr["DNI"].ToString();
-                FechaGestion = Dr.GetDateTime(11);   // Dr["FECHAGESTION"];
-                FechaNaci = Dr.GetDateTime(12);      //  ["FECHANATAL"];
-                EstadoCivil = Dr["ESTADOCIVIL"].ToString();
-                Email = Dr["CORREOELECTRONICO"].ToString();
-                Topes = Math.Round(Dr.GetDouble(15), 2);
-                OrdenCobranza = Dr["ORDENCOBRANZA"].ToString();
-                Estado = Dr["ESTADO"].ToString().Trim();
-                Incobrable = Dr["INCOBRABLE"].ToString().Trim();
-                PersonaJuridica = Dr["PERSONAJURIDICA"].ToString().Trim();
-                Sexo = Dr["SEXO"].ToString().Trim();
-                Disponible = Math.Round(Dr.GetDouble(21), 2);// Dr["DISPONIBLE"].ToString();
-                Consumido = Math.Round(Dr.GetDouble(22), 2);
-                TelefonoCasa = Dr["TELEFONOCASA"].ToString();
-                Celular = Dr["CELULAR"].ToString();
-                Dr.Close();*/
+                doc.TotalVenta = 2;
+                doc.TotalOtrosTributos = 2;
+                doc.TotalIsc = 3;
+                doc.TotalIgv = 32;
+                doc.TipoOperacion = "ddd";
+                doc.TipoDocumento = "dd";
+                doc.Receptor.NombreComercial = "albusa";
+                doc.Receptor.NombreLegal = "dd";
+                doc.Receptor.NroDocumento = "ddd";
+                doc.Receptor.Provincia = "ddd";
+                doc.Receptor.TipoDocumento = "dd";
+                doc.Receptor.Ubigeo = "3";
+                doc.Receptor.Urbanizacion = "3";
+                doc.Receptor.Distrito = "2";
+                doc.Receptor.Direccion = "dd";
+                doc.Receptor.Departamento = "ww";
+                doc.MontoEnLetras = "djdjdjd";
+                doc.Moneda = "PEN";
+                doc.Inafectas = 2;
+                doc.IdDocumento = "454";
+                doc.Gravadas = 455;
+                doc.Gratuitas = 2;
+                doc.Exoneradas = 12;
+                doc.CalculoIsc = 125;
+                doc.CalculoIgv = 22;
+                doc.CalculoDetraccion = 21;
+                doc.Emisor.NombreComercial = "albusa";
+                
+                doc.Emisor.NroDocumento = "wee";
+                doc.Emisor.Provincia = "eew";
+                doc.Emisor.TipoDocumento = "ew";
+                doc.Emisor.Ubigeo = "3";
+                doc.Emisor.Urbanizacion = "3";
+                doc.Emisor.Distrito = "2";
+                doc.Emisor.Direccion = "ew";
+                doc.Emisor.Departamento = "eee";
+
+
+
+                /*  Cliente = Dr["CLIENTEID"].ToString();
+                  UsuarioID = Dr["USUARIOID"].ToString();
+                  ZonaId = Dr["ZONAID"].ToString();
+                  DistritoId = Dr["DISTRITOID"].ToString();
+                  CodCliente = Dr["CODIGOCLIENTE"].ToString();
+                  Nombre = Dr["NOMBRECLIENTE"].ToString();
+                  Apellido = Dr["APELLIDOCLIENTE"].ToString();
+                  Ruc = Dr["RUC"].ToString();
+                  Domicilio = Dr["DOMICILIO"].ToString();
+                  Ciudad = Dr["CIUDAD"].ToString();
+                  Dni = Dr["DNI"].ToString();
+                  FechaGestion = Dr.GetDateTime(11);   // Dr["FECHAGESTION"];
+                  FechaNaci = Dr.GetDateTime(12);      //  ["FECHANATAL"];
+                  EstadoCivil = Dr["ESTADOCIVIL"].ToString();
+                  Email = Dr["CORREOELECTRONICO"].ToString();
+                  Topes = Math.Round(Dr.GetDouble(15), 2);
+                  OrdenCobranza = Dr["ORDENCOBRANZA"].ToString();
+                  Estado = Dr["ESTADO"].ToString().Trim();
+                  Incobrable = Dr["INCOBRABLE"].ToString().Trim();
+                  PersonaJuridica = Dr["PERSONAJURIDICA"].ToString().Trim();
+                  Sexo = Dr["SEXO"].ToString().Trim();
+                  Disponible = Math.Round(Dr.GetDouble(21), 2);// Dr["DISPONIBLE"].ToString();
+                  Consumido = Math.Round(Dr.GetDouble(22), 2);
+                  TelefonoCasa = Dr["TELEFONOCASA"].ToString();
+                  Celular = Dr["CELULAR"].ToString();
+                  Dr.Close();*/
                 return true;
             }
             else
