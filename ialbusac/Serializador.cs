@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Ionic.Zip;
+using System.Windows.Forms;
 
 namespace ialbusacpr.ialbusac
 {
@@ -93,11 +94,17 @@ namespace ialbusacpr.ialbusac
             var memOrigen = new MemoryStream(Convert.FromBase64String(tramaXml));
             var memDestino = new MemoryStream();
             string resultado;
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Winrar| .rar";
+           // save.ShowDialog();
+          //  save.FileName = "D:\\";
 
             using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
             {
                 fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
-                fileZip.Save(memDestino);
+               // fileZip.Save(memDestino);
+                fileZip.Save($"{nombreArchivo}.zip");
+                fileZip.Dispose();
                 resultado = Convert.ToBase64String(memDestino.ToArray());
             }
             // Liberamos memoria RAM.
