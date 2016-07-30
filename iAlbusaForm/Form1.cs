@@ -238,6 +238,7 @@ namespace  iAlbusaForm
         private void button3_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = _dkddkd.CargaCliente(dtp_a.Value,dtp_b.Value);
+            MessageBox.Show(dataGridView1.RowCount.ToString());
         }
     }
 }
