@@ -18,14 +18,14 @@ namespace ialbusacpr.Business
         //private readonly DocumentoElectronico _documento;
        
          
-     public Boolean CargaCliente(DocumentoElectronico doc)
+     public DataTable CargaCliente( DateTime f1,DateTime f2)
         {
             OracleConnection Cn = new OracleConnection();
             
             // var doc = (DocumentoElectronico)_documento.Clone();
             if (Cn.State == ConnectionState.Closed)
             {
-                Cn.ConnectionString = "Data Source=maximus;Persist Security Info=True;User ID=db_prueba;Password=db_prueba;Unicode=True";
+                Cn.ConnectionString = "Data Source=maximus;Persist Security Info=True;User ID=db_albusa;Password=db_albusa;Unicode=True";
                 Cn.Open();
             }
             String sSQL = " SELECT d.documentoid,  (to_char(d.fecha, 'yyyy') || '-' || to_char(d.fecha, 'mm') || '-' || to_char(d.fecha, 'dd')) as IssueDate, "//- 1 Fecha de emision
@@ -85,16 +85,28 @@ namespace ialbusacpr.Business
          + "    FROM       pagos p, documentos d,  tiposdocumento td, cajas c,  clientes cl, creditos cr,  tipo_documento td2,"
    + " tipo_cambio tc WHERE p.pagoid = d.pagoid(+)  AND d.tipodocumentoid = td.tipodocumentoid(+)  AND td.tipo_doc = td2.id_tipodoc(+)"
      + "   AND td.cajaid = c.cajaid(+)  AND p.creditoid = cr.creditoid(+)  AND cr.clienteid = cl.clienteid(+) and trunc(d.fechareal) = trunc(tc.fechaingreso)  "
-     + "     AND to_number(to_char(d.fecha, 'yyyy')) = '2016'  AND to_number(to_char(d.fecha, 'mm')) = '07'  AND c.seriedocumentos is not null  "
-     +" and  d.numero='2247370'  "
+     + "     AND  trunc(d.fecha) >= '" + f1.ToShortDateString() + "'     AND   trunc(d.fecha)  <= '" + f1.ToShortDateString()  +"' AND c.seriedocumentos is not null  "
+     // + " ---and  d.numero='2247370'  "
      + "    order by d.documentoid asc ";
 
             OracleCommand Cmd = new OracleCommand();
+             OracleDataAdapter Dap = new OracleDataAdapter();
             Cmd.CommandText = sSQL;
             Cmd.CommandType = CommandType.Text;
             Cmd.Connection = Cn;
 
-            OracleDataReader Dr;
+            ///llenar datagridview
+            Dap.SelectCommand = Cmd;
+            DataTable Dt = new DataTable();
+            Dap.Fill(Dt);
+            return Dt;
+
+            /// 
+
+
+
+ 
+          /*  OracleDataReader Dr;
 
             Dr = Cmd.ExecuteReader();
            
@@ -139,36 +151,11 @@ namespace ialbusacpr.Business
                 doc.Emisor.Urbanizacion = "3";
                 doc.Emisor.Distrito = "2";
                 doc.Emisor.Direccion = "ew";
-                doc.Emisor.Departamento = "eee";
+                doc.Emisor.Departamento = "eee"; 
 
 
 
-                /*  Cliente = Dr["CLIENTEID"].ToString();
-                  UsuarioID = Dr["USUARIOID"].ToString();
-                  ZonaId = Dr["ZONAID"].ToString();
-                  DistritoId = Dr["DISTRITOID"].ToString();
-                  CodCliente = Dr["CODIGOCLIENTE"].ToString();
-                  Nombre = Dr["NOMBRECLIENTE"].ToString();
-                  Apellido = Dr["APELLIDOCLIENTE"].ToString();
-                  Ruc = Dr["RUC"].ToString();
-                  Domicilio = Dr["DOMICILIO"].ToString();
-                  Ciudad = Dr["CIUDAD"].ToString();
-                  Dni = Dr["DNI"].ToString();
-                  FechaGestion = Dr.GetDateTime(11);   // Dr["FECHAGESTION"];
-                  FechaNaci = Dr.GetDateTime(12);      //  ["FECHANATAL"];
-                  EstadoCivil = Dr["ESTADOCIVIL"].ToString();
-                  Email = Dr["CORREOELECTRONICO"].ToString();
-                  Topes = Math.Round(Dr.GetDouble(15), 2);
-                  OrdenCobranza = Dr["ORDENCOBRANZA"].ToString();
-                  Estado = Dr["ESTADO"].ToString().Trim();
-                  Incobrable = Dr["INCOBRABLE"].ToString().Trim();
-                  PersonaJuridica = Dr["PERSONAJURIDICA"].ToString().Trim();
-                  Sexo = Dr["SEXO"].ToString().Trim();
-                  Disponible = Math.Round(Dr.GetDouble(21), 2);// Dr["DISPONIBLE"].ToString();
-                  Consumido = Math.Round(Dr.GetDouble(22), 2);
-                  TelefonoCasa = Dr["TELEFONOCASA"].ToString();
-                  Celular = Dr["CELULAR"].ToString();
-                  Dr.Close();*/
+               
                 return true;
             }
             else
@@ -176,7 +163,7 @@ namespace ialbusacpr.Business
                 Dr.Close();
 
                 return false;
-            }
+            }*/
         }
 
         public object Clone()
