@@ -40,10 +40,12 @@ namespace  iAlbusaForm
            
             txtNroRuc.Text = "20484205249";
             txtNroRuc.ReadOnly = true;
-            txtUsuarioSol.Text = "20484205249MODDATOS";
+            txtUsuarioSol.Text = "MODDATOS";
             txtUsuarioSol.ReadOnly = true;
             txtClaveSol.Text = "MODDATOS";
             txtClaveSol.ReadOnly = true;
+         //   txtRutaCertificado.Text = "D:\iAlbusaForm_TemporaryKey.pfx";
+           txtPassCertificado.Text = "123456789";
 
             //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
             //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";

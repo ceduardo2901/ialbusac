@@ -271,7 +271,7 @@ namespace ialbusacpr.Business
                   doc.TotalIgv = 32;
                   doc.TipoOperacion = "ddd";
                   doc.TipoDocumento = "dd";
-                  doc.Receptor.NombreComercial = "albusa";
+                  doc.Receptor.NombreComercial = "INVERSIONES ALBUSA";
                   doc.Receptor.NombreLegal = "dd";
                   doc.Receptor.NroDocumento = "ddd";
                   doc.Receptor.Provincia = "ddd";
@@ -293,7 +293,7 @@ namespace ialbusacpr.Business
                   doc.CalculoDetraccion = 21;
                   doc.Emisor.NombreComercial = "albusa";
 
-                  doc.Emisor.NroDocumento = "wee";
+                  doc.Emisor.NroDocumento = "42544373";
                   doc.Emisor.Provincia = "eew";
                   doc.Emisor.TipoDocumento = "ew";
                   doc.Emisor.Ubigeo = "3";
