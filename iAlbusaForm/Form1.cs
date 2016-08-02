@@ -36,6 +36,8 @@ namespace  iAlbusaForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+           
             txtNroRuc.Text = "20484205249";
             txtNroRuc.ReadOnly = true;
             txtUsuarioSol.Text = "20484205249MODDATOS";
@@ -43,8 +45,19 @@ namespace  iAlbusaForm
             txtClaveSol.Text = "MODDATOS";
             txtClaveSol.ReadOnly = true;
 
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
+            //dataGridView1.Columns[0].Name = "Nº DOCUMENTO";
 
-          
+            //dataGridView1.ColumnCount = 4;
+            //dataGridView1.AutoGenerateColumns = false;
+            //DataGridViewComboBoxColumn comboboxColumn = dataGridView1.Columns[1] as DataGridViewComboBoxColumn;
+            //dataGridView1.Columns[1].Name = "documentoid";
+            //dataGridView1.Columns[1].HeaderText = "Nº docuemnto";
 
 
 
@@ -86,16 +99,16 @@ namespace  iAlbusaForm
                     break;
             }
 
-            
-            
-          //  Boolean g = _dkddkd.CargaCliente(doc);
-            //if (g)
-            //{
-            //    MessageBox.Show("Este : " + doc.FechaEmision + "" + doc.Emisor.NombreLegal);
+
+
+            Boolean g = _dkddkd.CargaDocumento(doc);
+            if (g)
+            {
+                MessageBox.Show("Este : " + doc.FechaEmision + "" + doc.Emisor.NombreLegal);
 
 
 
-            //}
+            }
 
             var invoice = Generador.GenerarInvoice(doc);
 
@@ -117,7 +130,11 @@ namespace  iAlbusaForm
 
             MessageBox.Show(RutaArchivo);
 
-            var byteArray = File.ReadAllBytes("D:\\10711124123-1-seri.xml"); //ruta del xml 
+            // var byteArray = File.ReadAllBytes("D:\\10711124123-1-seri.xml"); //ruta del xml 
+            var byteArray = File.ReadAllBytes(RutaArchivo); //ruta del xml 
+
+
+
             // Firmamos el XML.
             var tramaFirmado = serializador.FirmarXml(Convert.ToBase64String(byteArray));
             // Le damos un nuevo nombre al archivo
@@ -237,8 +254,12 @@ namespace  iAlbusaForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
             dataGridView1.DataSource = _dkddkd.CargaCliente(dtp_a.Value,dtp_b.Value);
             MessageBox.Show(dataGridView1.RowCount.ToString());
+          //  MessageBox.Show(dtp_a.Format("dd/mm/aa");
+
+
         }
     }
 }
