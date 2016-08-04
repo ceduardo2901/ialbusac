@@ -62,7 +62,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(424, 195);
+            this.button1.Location = new System.Drawing.Point(420, 312);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -72,14 +72,14 @@
             // 
             // txtRutaCertificado
             // 
-            this.txtRutaCertificado.Location = new System.Drawing.Point(25, 459);
+            this.txtRutaCertificado.Location = new System.Drawing.Point(43, 213);
             this.txtRutaCertificado.Name = "txtRutaCertificado";
             this.txtRutaCertificado.Size = new System.Drawing.Size(166, 20);
             this.txtRutaCertificado.TabIndex = 1;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(225, 445);
+            this.button2.Location = new System.Drawing.Point(243, 199);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 34);
             this.button2.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             // txtPassCertificado
             // 
-            this.txtPassCertificado.Location = new System.Drawing.Point(25, 525);
+            this.txtPassCertificado.Location = new System.Drawing.Point(43, 279);
             this.txtPassCertificado.Name = "txtPassCertificado";
             this.txtPassCertificado.Size = new System.Drawing.Size(166, 20);
             this.txtPassCertificado.TabIndex = 3;
@@ -97,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 433);
+            this.label1.Location = new System.Drawing.Point(40, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 4;
@@ -106,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 497);
+            this.label2.Location = new System.Drawing.Point(43, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 5;
@@ -209,7 +209,7 @@
             // btnGetStatus
             // 
             this.btnGetStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetStatus.Location = new System.Drawing.Point(642, 653);
+            this.btnGetStatus.Location = new System.Drawing.Point(524, 666);
             this.btnGetStatus.Name = "btnGetStatus";
             this.btnGetStatus.Size = new System.Drawing.Size(103, 53);
             this.btnGetStatus.TabIndex = 25;
@@ -219,7 +219,7 @@
             // btnGen
             // 
             this.btnGen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGen.Location = new System.Drawing.Point(596, 195);
+            this.btnGen.Location = new System.Drawing.Point(592, 312);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(73, 23);
             this.btnGen.TabIndex = 24;
@@ -231,12 +231,12 @@
             this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.BackColor = System.Drawing.SystemColors.Info;
-            this.txtResult.Location = new System.Drawing.Point(28, 576);
+            this.txtResult.Location = new System.Drawing.Point(28, 666);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(590, 143);
+            this.txtResult.Size = new System.Drawing.Size(460, 53);
             this.txtResult.TabIndex = 23;
             // 
             // cboTipoDoc
@@ -268,16 +268,21 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 245);
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 342);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 151);
+            this.dataGridView1.Size = new System.Drawing.Size(1001, 318);
             this.dataGridView1.TabIndex = 28;
             // 
             // dtp_a
             // 
             this.dtp_a.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_a.Location = new System.Drawing.Point(72, 199);
+            this.dtp_a.Location = new System.Drawing.Point(68, 316);
             this.dtp_a.Name = "dtp_a";
             this.dtp_a.Size = new System.Drawing.Size(99, 20);
             this.dtp_a.TabIndex = 29;
@@ -285,7 +290,7 @@
             // dtp_b
             // 
             this.dtp_b.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_b.Location = new System.Drawing.Point(218, 199);
+            this.dtp_b.Location = new System.Drawing.Point(214, 316);
             this.dtp_b.Name = "dtp_b";
             this.dtp_b.Size = new System.Drawing.Size(99, 20);
             this.dtp_b.TabIndex = 30;
@@ -293,7 +298,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 205);
+            this.label6.Location = new System.Drawing.Point(35, 322);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 31;
@@ -302,7 +307,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(188, 205);
+            this.label8.Location = new System.Drawing.Point(184, 322);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(20, 13);
             this.label8.TabIndex = 32;
@@ -310,7 +315,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(343, 195);
+            this.button3.Location = new System.Drawing.Point(339, 312);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 33;
@@ -320,7 +325,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(505, 195);
+            this.button4.Location = new System.Drawing.Point(501, 312);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 34;

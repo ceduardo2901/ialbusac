@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a4aa275f-1985-467c-929d-60865e466b1e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6f41e458-f054-444c-9603-9267d7d09955" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,9 +22,9 @@
     <MetadataSource Address="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="billService.wsdl" MetadataType="Wsdl" ID="eca17bc2-f476-4155-ab79-1d318fccc561" SourceId="1" SourceUrl="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService?ns1.wsdl" />
-    <MetadataFile FileName="billService1.wsdl" MetadataType="Wsdl" ID="9885a9e9-908b-4210-8cdf-69111974d79a" SourceId="1" SourceUrl="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService?wsdl" />
-    <MetadataFile FileName="billService.xsd" MetadataType="Schema" ID="a8a400ec-95e9-4d26-8ed7-e7bfe8ede757" SourceId="1" SourceUrl="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService.xsd2.xsd" />
+    <MetadataFile FileName="billService.wsdl" MetadataType="Wsdl" ID="587a72c7-9c77-4f72-a09b-8780670de1c7" SourceId="1" SourceUrl="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService?ns1.wsdl" />
+    <MetadataFile FileName="billService1.wsdl" MetadataType="Wsdl" ID="40118a8f-4dc2-444d-a14d-9f6de1d2380c" SourceId="1" SourceUrl="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService?wsdl" />
+    <MetadataFile FileName="billService.xsd" MetadataType="Schema" ID="f9bc309e-98d6-4a7b-ba98-da3f0ff53b06" SourceId="1" SourceUrl="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService.xsd2.xsd" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
