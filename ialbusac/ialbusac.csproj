@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Service References\Sunat1\billService.wsdl" />
     <None Include="Service References\Sunat1\billService.xsd">
