@@ -40,7 +40,7 @@ namespace  iAlbusaForm
            
             txtNroRuc.Text = "20484205249";
             txtNroRuc.ReadOnly = true;
-            txtUsuarioSol.Text = "20484205249MODDATOS";
+            txtUsuarioSol.Text = "MODDATOS";
             txtUsuarioSol.ReadOnly = true;
             txtClaveSol.Text = "MODDATOS";
             txtClaveSol.ReadOnly = true;
@@ -102,6 +102,19 @@ namespace  iAlbusaForm
                         codigoTipoDoc = "01";
                         break;
                 }
+                // consultar factura 
+                Boolean g = _dkddkd.CargaFactura(doc);
+                if (g)
+                {
+                    MessageBox.Show("Este : " + doc.FechaEmision + "" + doc.Emisor.NombreLegal);
+
+                }
+
+                var invoice = Generador.GenerarInvoice(doc);
+                // fin consultar factura
+
+
+
                 // Una vez validado el XML seleccionado procedemos con obtener el Certificado.
                 var serializar = new Serializador
                 {
@@ -110,27 +123,60 @@ namespace  iAlbusaForm
                     TipoDocumento = rbRetenciones.Checked ? 0 : 1
                 };
 
+                //generar xml sin firma 
+                RutaArchivo = serializar.GenerarXmlFisico(invoice, string.Format("{0}-{1}-{2}",
+               doc.Emisor.NroDocumento,
+                doc.TipoDocumento,
+                doc.IdDocumento));
+
+                MessageBox.Show(RutaArchivo);
+                // firma xml
+                // var byteArray = File.ReadAllBytes("D:\\10711124123-1-seri.xml"); //ruta del xml 
+                var byteArray = File.ReadAllBytes(RutaArchivo); //ruta del xml 
+
+
+
+                // Firmamos el XML.
+                var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
+                // Le damos un nuevo nombre al archivo
+                var nombreArchivo = string.Format("{0}-{1}-{2}", txtNroRuc.Text, codigoTipoDoc,
+                        doc.IdDocumento);
+                // Escribimos el archivo XML ya firmado en una nueva ubicación.
+                using (var fs = File.Create(string.Format("{0}.xml", nombreArchivo)))
+                {
+                    var byteFirmado = Convert.FromBase64String(tramaFirmado);
+                    fs.Write(byteFirmado, 0, byteFirmado.Length);
+                }
+
+
+
+
+
+
+
+
+                //
                 // Validacion extra cuando sea un documento de resumen.
                 if (rbResumen.Checked) serializar.TipoDocumento = 0;
 
                 using (var conexion = new ConexionSunat(txtNroRuc.Text, txtUsuarioSol.Text,
                     txtClaveSol.Text, rbRetenciones.Checked ? "ServicioSunatRetenciones" : string.Empty))
                 {
-                    var byteArray = File.ReadAllBytes("D:\\42544373esteno-03-B003-2247370.xml");
+                    //var byteArray = File.ReadAllBytes("D:\\42544373esteno-03-B003-2247370.xml");
 
-                    Cursor = Cursors.WaitCursor;
+                    //Cursor = Cursors.WaitCursor;
 
-                    // Firmamos el XML.
-                    var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
-                    // Le damos un nuevo nombre al archivo
-                    var nombreArchivo = string.Format("{0}-{1}-{2}", txtNroRuc.Text, codigoTipoDoc,
-                        "B003-2247370");
-                    // Escribimos el archivo XML ya firmado en una nueva ubicación.
-                    using (var fs = File.Create(string.Format("{0}.xml", nombreArchivo)))
-                    {
-                        var byteFirmado = Convert.FromBase64String(tramaFirmado);
-                        fs.Write(byteFirmado, 0, byteFirmado.Length);
-                    }
+                    //// Firmamos el XML.
+                    //var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
+                    //// Le damos un nuevo nombre al archivo
+                    //var nombreArchivo = string.Format("{0}-{1}-{2}", txtNroRuc.Text, codigoTipoDoc,
+                    //    "B003-2247370");
+                    //// Escribimos el archivo XML ya firmado en una nueva ubicación.
+                    //using (var fs = File.Create(string.Format("{0}.xml", nombreArchivo)))
+                    //{
+                    //    var byteFirmado = Convert.FromBase64String(tramaFirmado);
+                    //    fs.Write(byteFirmado, 0, byteFirmado.Length);
+                    //}
 
                     // Ahora lo empaquetamos en un ZIP.
                     var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
@@ -164,9 +210,9 @@ namespace  iAlbusaForm
                         {
                             var returnByte = Convert.FromBase64String(resultado.Item1);
 
-                            var rutaArchivo = string.Format("{0}\\R-{1}.zip", Directory.GetCurrentDirectory(),
+                            var rutaArchivox = string.Format("{0}\\R-{1}.zip", Directory.GetCurrentDirectory(),
                                 nombreArchivo);
-                            var fs = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write);
+                            var fs = new FileStream(rutaArchivox, FileMode.Create, FileAccess.Write);
                             fs.Write(returnByte, 0, returnByte.Length);
                             fs.Close();
 
@@ -176,9 +222,9 @@ namespace  iAlbusaForm
                           //  sb.AppendLine(Resources.procesoCorrecto);
 
                             // Extraemos el XML contenido en el archivo de respuesta como un XML.
-                            var rutaArchivoXmlRespuesta = rutaArchivo.Replace(".zip", ".xml");
+                            var rutaArchivoXmlRespuesta = rutaArchivox.Replace(".zip", ".xml");
                             // Procedemos a desempaquetar el archivo y leer el contenido de la respuesta SUNAT.
-                            using (var streamZip = ZipFile.Read(File.Open(rutaArchivo,
+                            using (var streamZip = ZipFile.Read(File.Open(rutaArchivox,
                                 FileMode.Open,
                                 FileAccess.ReadWrite)))
                             {
@@ -190,7 +236,15 @@ namespace  iAlbusaForm
                                         .Extract(".", ExtractExistingFileAction.OverwriteSilently);
                                     else
                                         streamZip.Entries.First()
-                                            .Extract(".", ExtractExistingFileAction.OverwriteSilently);
+                                            .Extract(".", ExtractExistingFileAction.DoNotOverwrite);
+                                   
+
+
+                                }
+                               
+                                     foreach (ZipEntry euii in streamZip)
+                                {
+                                    euii.Extract(Directory.GetCurrentDirectory());
                                 }
                             }
                             // Como ya lo tenemos extraido, leemos el contenido de dicho archivo.

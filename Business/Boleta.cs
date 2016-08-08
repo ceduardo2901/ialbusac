@@ -273,6 +273,8 @@ namespace ialbusacpr.Business
         ///  
         public Boolean CargaFactura(DocumentoElectronico doc)
         {
+            DetalleDocumento _detralle = new DetalleDocumento();
+            /*
             OracleConnection Cn = new OracleConnection();
 
             // var doc = (DocumentoElectronico)_documento.Clone();
@@ -345,8 +347,7 @@ namespace ialbusacpr.Business
 
             /// 
 
-
-
+ 
 
             OracleDataReader Dr;
 
@@ -397,17 +398,79 @@ namespace ialbusacpr.Business
                 doc.Emisor.Direccion = "Jr junin";
                 doc.Emisor.Departamento = "20";
                 //  doc.Items.Add()
+                _detralle.Cantidad = 1;
+                _detralle.CodigoItem = "";
+                _detralle.Descripcion = "";
+                _detralle.Id = 1;
+                _detralle.Impuesto = 1;
+                _detralle.ImpuestoSelectivo = 1;
+                _detralle.OtroImpuesto = 1;
+                _detralle.PrecioReferencial = 1;
+                _detralle.PrecioUnitario = 1;
+             //   _detralle.Suma =1;
+                _detralle.TipoImpuesto = "2";
+                _detralle.TipoPrecio = "1";
+                _detralle.TotalVenta = 12;
+                _detralle.UnidadMedida = "";*/
+            //   datos de prueba
 
+
+            doc.Emisor.NroDocumento = "20484205249";
+                doc.Emisor.TipoDocumento = "6";
+                doc.Emisor.Direccion = "CAL.MORELLI NRO. 181 INT. P-2";
+                doc.Emisor.Urbanizacion = "-";
+                doc.Emisor.Departamento = "LIMA";
+                doc.Emisor.Provincia = "LIMA";
+                doc.Emisor.Distrito = "SAN BORJA";
+                doc.Emisor.NombreComercial = "PLAZA VEA";
+                doc.Emisor.NombreLegal = "SUPERMERCADOS PERUANOS SOCIEDAD ANONIMA";
+
+
+                doc.Receptor.NroDocumento = "20100039207";
+                doc.Receptor.TipoDocumento = "6";
+                doc.Receptor.NombreLegal = "RANSA COMERCIAL S.A.";
+
+                doc.IdDocumento = "FF11-002";
+                doc.FechaEmision = "02/02/2016";
+                doc.Moneda = "PEN";
+                doc.MontoEnLetras = "SON CIENTO DIECIOCHO SOLES CON 0/100";
+                doc.CalculoIgv = 180;
+                doc.CalculoIsc = 0;
+                doc.CalculoDetraccion = 0;
+                    doc.TipoDocumento = "01";
+                doc.TotalIgv = 180;
+                doc.TotalVenta = 118;
+                doc.Gravadas = 100;
+                    
+
+
+
+                _detralle.Id = 1;
+                _detralle.Cantidad = 5;
+                _detralle.PrecioReferencial = 20;
+                _detralle.PrecioUnitario = 20;
+                _detralle.TipoPrecio = "01";
+                _detralle.CodigoItem = "1234234";
+                _detralle.Descripcion = "Arroz Costeo";
+                _detralle.UnidadMedida = "KG";
+                _detralle.Impuesto = 18;
+                _detralle.TipoImpuesto = "10";
+                _detralle.TotalVenta = 100;
+                _detralle.Suma = 100;
+
+                doc.Items.Add(_detralle);
+
+                //
 
 
                 return true;
-            }
-            else
-            {
-                Dr.Close();
+            //}
+            //else
+            //{
+            //    Dr.Close();
 
-                return false;
-            }
+            //    return false;
+            //}  
         }
 
         ///

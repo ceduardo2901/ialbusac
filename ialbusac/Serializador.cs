@@ -47,8 +47,21 @@ namespace ialbusacpr.ialbusac
         /// <returns>Devuelve la ruta del Archivo generado</returns>
         public string GenerarXmlFisico<T>(T request, string nombreArchivo)
         {
+            //var serializer = new XmlSerializer(typeof(T));
+            //var filename = Directory.GetCurrentDirectory() + $@"\{nombreArchivo}.xml";
+
+            //using (var writer = new StreamWriter(filename))
+            //{
+            //    serializer.Serialize(writer, request);
+            //}
+
+            //return filename;
+
+            //antes de modificacar lo de arriba sirve
+
+
             var serializer = new XmlSerializer(typeof(T));
-            var filename = Directory.GetCurrentDirectory() + $@"\{nombreArchivo}.xml";
+            var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
 
             using (var writer = new StreamWriter(filename))
             {
@@ -56,6 +69,13 @@ namespace ialbusacpr.ialbusac
             }
 
             return filename;
+
+
+
+
+
+
+
         }
         /// <summary>
         /// Genera el XML basado en una clase con el atributo Serializable
