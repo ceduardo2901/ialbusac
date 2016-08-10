@@ -27,6 +27,7 @@ namespace  iAlbusaForm
     {
         Boleta _dkddkd = new Boleta();
         DocumentoElectronico doc = new DocumentoElectronico();
+        ResumenDiario rd = new ResumenDiario();
         public string RutaArchivo { get; set; }
         public string IdDocumento { get; set; }
         public Form1()
@@ -109,9 +110,22 @@ namespace  iAlbusaForm
                     MessageBox.Show("Este : " + doc.FechaEmision + "" + doc.Emisor.NombreLegal);
 
                 }
-
+                GrupoResumen gr = new GrupoResumen();
                 var invoice = Generador.GenerarInvoice(doc);
-               //var creditNote=
+                rd.Emisor.Departamento = "ee";
+                gr.CorrelativoFin = 1;
+                gr.TotalVenta = 78;
+
+                rd.Resumenes.Add(gr);
+
+                var rde = Generador.GenerarSummaryDocuments(rd);
+                CreditNote cn = new CreditNote();
+                InvoiceDocumentReference idr = new InvoiceDocumentReference();
+                DocumentoRelacionado drelacionado = new DocumentoRelacionado();
+                drelacionado.NroDocumento = "nro factura anular";
+                drelacionado.TipoDocumento = "03";
+                doc.Relacionados.Add(drelacionado);
+                var creditNote = Generador.GenerarCreditNote(doc);
                 // fin consultar factura
 
 
