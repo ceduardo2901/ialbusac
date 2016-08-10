@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace ialbusacpr.ialbusac.Models
+﻿namespace ialbusacpr.ialbusac.Models
 {
-    [Serializable]
     public class Contribuyente
     {
         public string NroDocumento { get; set; }

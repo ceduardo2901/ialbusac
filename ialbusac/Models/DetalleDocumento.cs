@@ -1,9 +1,6 @@
-﻿using System;
-
-namespace ialbusacpr.ialbusac.Models
+﻿namespace ialbusacpr.ialbusac.Models
 {
-    [Serializable]
-    public class DetalleDocumento : ICloneable
+    public class DetalleDocumento
     {
         public int Id { get; set; }
         public decimal Cantidad { get; set; }
@@ -20,9 +17,12 @@ namespace ialbusacpr.ialbusac.Models
         public string CodigoItem { get; set; }
         public decimal PrecioReferencial { get; set; }
 
-        public object Clone()
+        public DetalleDocumento()
         {
-            return Utiles.Copia(this);
+            Id = 1;
+            UnidadMedida = "NIU";
+            TipoPrecio = "01";
+            TipoImpuesto = "10";
         }
     }
 }

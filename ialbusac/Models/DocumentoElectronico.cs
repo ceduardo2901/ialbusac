@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace ialbusacpr.ialbusac.Models
 {
-    [Serializable]
-    public class DocumentoElectronico : ICloneable
+    public class DocumentoElectronico 
     {
 
         public string TipoDocumento { get; set; }
@@ -21,6 +21,8 @@ namespace ialbusacpr.ialbusac.Models
         public decimal Inafectas { get; set; }
         public decimal Exoneradas { get; set; }
 
+        public decimal DescuentoGlobal { get; set; }
+
         public decimal TotalVenta { get; set; }
         public decimal TotalIgv { get; set; }
         public decimal TotalIsc { get; set; }
@@ -33,22 +35,42 @@ namespace ialbusacpr.ialbusac.Models
         public decimal CalculoIsc { get; set; }
         public decimal CalculoDetraccion { get; set; }
 
+        public decimal MontoPercepcion { get; set; }
+        public decimal MontoDetraccion { get; set; }
+
+        public string TipoDocAnticipo { get; set; }
+        public string DocAnticipo { get; set; }
+        public string MonedaAnticipo { get; set; }
+        public decimal MontoAnticipo { get; set; }
+
+        public List<DatoAdicional> DatoAdicionales { get; set; }
+        public List<DocumentoRelacionado> Relacionados { get; set; }
         public ObservableCollection<DetalleDocumento> Items { get; set; }
+        public DatosGuia DatosGuiaTransportista { get; set; }
+        public List<Discrepancia> Discrepancias { get; set; }
 
         public DocumentoElectronico()
         {
-            Emisor = new Contribuyente();
-            Receptor = new Contribuyente();
+            Emisor = new Contribuyente
+            {
+                TipoDocumento = "6" // RUC.
+            };
+            Receptor = new Contribuyente
+            {
+                TipoDocumento = "6" // RUC.
+            };
             CalculoIgv = 0.18m;
-            CalculoIsc = 0.03m;
+            CalculoIsc = 0.10m;
             CalculoDetraccion = 0.04m;
             Items = new ObservableCollection<DetalleDocumento>();
+            DatoAdicionales = new List<DatoAdicional>();
+            Relacionados = new List<DocumentoRelacionado>();
+            Discrepancias = new List<Discrepancia>();
+            TipoDocumento = "01"; // Factura.
+            TipoOperacion = "01"; // Venta Interna.
+            Moneda = "PEN"; // Soles.
         }
 
-        public object Clone()
-        {
-            return Utiles.Copia(this);
-        }
     }
 
 }

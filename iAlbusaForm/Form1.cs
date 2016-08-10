@@ -111,6 +111,7 @@ namespace  iAlbusaForm
                 }
 
                 var invoice = Generador.GenerarInvoice(doc);
+               //var creditNote=
                 // fin consultar factura
 
 
@@ -231,6 +232,8 @@ namespace  iAlbusaForm
                                 // Nos aseguramos de que el ZIP contiene al menos un elemento.
                                 if (streamZip.Entries.Any())
                                 {
+
+                                    //estudiar este codigo entries.last();
                                     if (rbRetenciones.Checked)
                                         streamZip.Entries.Last()
                                         .Extract(".", ExtractExistingFileAction.OverwriteSilently);
