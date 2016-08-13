@@ -8,6 +8,7 @@ using System.Data.OracleClient;
 using System.Collections.ObjectModel;
 using ialbusacpr.ialbusac.Models;
 using ialbusacpr.ialbusac;
+using ialbusacpr.Business;
 
 
 namespace ialbusacpr.Business
@@ -83,35 +84,35 @@ namespace ialbusacpr.Business
             //    + "    order by d.documentoid asc ";
 
 
-            String sSQL = "  select   d.serie|| '-' ||   d.numero as NoTicket,D.DOCUMENTOID , d.fechareal  as FECHA,  "
+            String sSQL = "  select    d.serie,   d.serie|| '-' ||   d.numero as NoTicket,D.DOCUMENTOID , d.fechareal  as FECHA,  "
 
    + "  (select fl.descripcion from facturacion_log  fl  "
-+ " where trunc(fl.fecha)  >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as DESCRIPCION,"
++ " where trunc(fl.fecha)  >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as DESCRIPCION,"
 
 + " (select fl.rutazip from facturacion_log fl"
-+ " where trunc(fl.fecha)  >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as RUTAZIP,"
++ " where trunc(fl.fecha)  >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as RUTAZIP,"
 
 + " (select fl.Rutaxml from facturacion_log fl"
-+ " where trunc(fl.fecha)  >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as RUTAXML,"
++ " where trunc(fl.fecha)  >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as RUTAXML,"
 
 
 + " (select fl.Fecha from facturacion_log fl"
-+ " where trunc(fl.fecha) >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as FECHA,"
++ " where trunc(fl.fecha) >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as FECHA,"
 
 + " (select  CASE fl.Enviado when   1  then  'ENVIADO' when 0 then 'EN ESPERA' END from facturacion_log fl"
-+ " where trunc(fl.fecha) >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as ENVIADO ,"
++ " where trunc(fl.fecha) >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as ENVIADO ,"
 
 + "(select case        fl.Generado when   1  then  'GENERADO' when 0 then 'EN ESPERA' END from facturacion_log fl "
-+ "where trunc(fl.fecha)  >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as GENERADO, "
++ "where trunc(fl.fecha)  >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "'  and fl.pkdocumentoid = d.documentoid )as GENERADO, "
 
 + " (select   case fl.Zip when   1  then  'ZIPEADO' when 0 then 'EN ESPERA' END from facturacion_log fl "
-+ " where trunc(fl.fecha) >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "' and fl.pkdocumentoid = d.documentoid )as ZIP, "
++ " where trunc(fl.fecha) >='" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <='" + f2.ToShortDateString() + "' and fl.pkdocumentoid = d.documentoid )as ZIP, "
 
 + " (select     fl.respsunat from facturacion_log fl "
-+ " where trunc(fl.fecha) >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f1.ToShortDateString() + "' and fl.pkdocumentoid = d.documentoid )as SUNAT"
++ " where trunc(fl.fecha) >= '" + f1.ToShortDateString() + "'  AND   trunc(fl.fecha) <= '" + f2.ToShortDateString() + "' and fl.pkdocumentoid = d.documentoid )as SUNAT"
 
  + "  from documentos d"
- +  " where d.anulado = 0 and trunc(d.fechareal) >= '" + f1.ToShortDateString() + "'  AND   trunc(d.fechareal) <= '" + f1.ToShortDateString() + "'";
+ +  " where d.anulado = 0 and trunc(d.fechareal) >= '" + f1.ToShortDateString() + "'  AND   trunc(d.fechareal) <= '" + f2.ToShortDateString() + "'";
 
 
 
@@ -270,10 +271,80 @@ namespace ialbusacpr.Business
               }
         }
 
-        ///  
+        /// <summary>
+        public Boolean CargaDocumentoDetalle(DocumentoElectronico doc   , String nroDoc)
+        {
+            OracleConnection Cn = new OracleConnection();
+            DetalleDocumento _detralle = new DetalleDocumento();
+
+           
+//            if (Cn.State == ConnectionState.Closed)
+//            {
+//                Cn.ConnectionString = "Data Source=maximus;Persist Security Info=True;User ID=db_albusa;Password=db_albusa;Unicode=True";
+//                Cn.Open();
+//            }
+//            String sSQL = " select  cpd.*,   "
+//       + " (select nvl(t.importe, 5)  from cp_doc_det_imp t where t.nro_doc = cpd.nro_doc and  "
+//      + " t.item = cpd.item and t.idproveedor = cpd.idproveedor ) as igv "
+
+//     + " from cntas_pagar_det cpd  "
+
+
+//+ "where cpd.nro_doc = '"+ nroDoc +"' ";
+
+//            OracleCommand Cmd = new OracleCommand();
+//            OracleDataAdapter Dap = new OracleDataAdapter();
+//            Cmd.CommandText = sSQL;
+//            Cmd.CommandType = CommandType.Text;
+//            Cmd.Connection = Cn;
+
+             
+
+
+
+
+//            OracleDataReader Dr;
+
+//            Dr = Cmd.ExecuteReader();
+
+//            if (Dr.HasRows)
+//            {
+//                Dr.Read();
+
+                _detralle.Id = 1;
+                _detralle.Cantidad = 5;
+                _detralle.PrecioReferencial = 20;
+                _detralle.PrecioUnitario = 20;
+                _detralle.TipoPrecio = "01";
+                _detralle.CodigoItem = "1234234";
+                _detralle.Descripcion = "pelado gay ";
+                _detralle.UnidadMedida = "KG";
+                _detralle.Impuesto = 18;
+                _detralle.TipoImpuesto = "10";
+                _detralle.TotalVenta = 100;
+                _detralle.Suma = 100;
+
+                doc.Items.Add(_detralle);
+
+
+
+                return true;
+            //}
+            //else
+            //{
+            //    Dr.Close();
+
+            //    return false;
+            //}
+        }
+        ///
+         
+        /// 
+
+
         public Boolean CargaFactura(DocumentoElectronico doc)
         {
-            DetalleDocumento _detralle = new DetalleDocumento();
+            
             /*
             OracleConnection Cn = new OracleConnection();
 
@@ -445,20 +516,7 @@ namespace ialbusacpr.Business
 
 
 
-                _detralle.Id = 1;
-                _detralle.Cantidad = 5;
-                _detralle.PrecioReferencial = 20;
-                _detralle.PrecioUnitario = 20;
-                _detralle.TipoPrecio = "01";
-                _detralle.CodigoItem = "1234234";
-                _detralle.Descripcion = "Arroz Costeo";
-                _detralle.UnidadMedida = "KG";
-                _detralle.Impuesto = 18;
-                _detralle.TipoImpuesto = "10";
-                _detralle.TotalVenta = 100;
-                _detralle.Suma = 100;
-
-                doc.Items.Add(_detralle);
+               
 
                 //
 
@@ -473,7 +531,64 @@ namespace ialbusacpr.Business
             //}  
         }
 
-        ///
+        /// <summary>
+        /// Registra un documento factura procesado
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        public Boolean InsertarRegistros(facturacion_log f )
+        {
+            OracleConnection Cn = new OracleConnection();
+            if (Cn.State == ConnectionState.Closed)
+            {
+                Cn.ConnectionString = "Data Source=maximus;Persist Security Info=True;User ID=db_prueba;Password=db_prueba;Unicode=True";
+                Cn.Open();
+            }
+
+            OracleCommand Cmd = Cn.CreateCommand();
+            Cmd.CommandText = "usp_insertarDocFAc";
+            Cmd.CommandType = CommandType.StoredProcedure;
+            OracleTransaction Trs;
+            Trs = Cn.BeginTransaction();
+            Cmd.Transaction = Trs;
+
+            try
+            {
+                Cmd.Parameters.Add("IDFACTURACION", OracleType.Number, 10).Value = f.IDFACTURACION;
+                Cmd.Parameters.Add("DESCRIPCION", OracleType.VarChar, 90).Value = f.DESCRIPCION;
+                Cmd.Parameters.Add("ESTADO", OracleType.Number, 10).Value = f.ESTADO;
+                Cmd.Parameters.Add("ENVIADO", OracleType.Number, 10).Value = f.ENVIADO;
+                Cmd.Parameters.Add("ZIP", OracleType.Number, 8).Value = f.ZIP;
+                Cmd.Parameters.Add("GENERADO", OracleType.Number, 8).Value = f.GENERADO;
+                Cmd.Parameters.Add("RUTAZIP", OracleType.VarChar, 100).Value = f.RUTAZIP;
+                Cmd.Parameters.Add("RUTAXML", OracleType.VarChar, 100).Value = f.RUTAXML;
+                Cmd.Parameters.Add("PKDOCUMENTOID", OracleType.Number, 16).Value = f.PKDOCUMENTOID;
+                Cmd.Parameters.Add("PKKUSUARIOID", OracleType.Number, 16).Value = f.PKKUSUARIOID;
+                Cmd.Parameters.Add("FECHA", OracleType.DateTime, 8).Value = f.FECHA;
+                Cmd.Parameters.Add("RESPSUNAT", OracleType.NVarChar, 200).Value = f.RESPSUNAT;
+                Cmd.Parameters.Add("IDTIPODOC", OracleType.NVarChar, 8).Value = f.IDTIPODOC;
+
+
+
+          
+
+
+
+                     Cmd.ExecuteNonQuery();
+                Trs.Commit();
+
+                return true;
+            }
+
+            catch //(Exception e)
+            {
+                Trs.Rollback();
+                return false;
+            }
+
+
+        }
+
 
         public object Clone()
         {

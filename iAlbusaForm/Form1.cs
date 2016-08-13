@@ -105,27 +105,37 @@ namespace  iAlbusaForm
                 }
                 // consultar factura 
                 Boolean g = _dkddkd.CargaFactura(doc);
+                Boolean h = _dkddkd.CargaDocumentoDetalle(doc,"");
+                foreach (var detalleDocumento in doc.Items)
+                {
+
+                    MessageBox.Show(detalleDocumento.Descripcion);
+
+                }
+
+
+                    
                 if (g)
                 {
                     MessageBox.Show("Este : " + doc.FechaEmision + "" + doc.Emisor.NombreLegal);
 
                 }
-                GrupoResumen gr = new GrupoResumen();
-                var invoice = Generador.GenerarInvoice(doc);
-                rd.Emisor.Departamento = "ee";
-                gr.CorrelativoFin = 1;
-                gr.TotalVenta = 78;
+                //GrupoResumen gr = new GrupoResumen();
+              var invoice = Generador.GenerarInvoice(doc);
+                //rd.Emisor.Departamento = "ee";
+                //gr.CorrelativoFin = 1;
+                //gr.TotalVenta = 78;
 
-                rd.Resumenes.Add(gr);
+                //rd.Resumenes.Add(gr);
 
-                var rde = Generador.GenerarSummaryDocuments(rd);
-                CreditNote cn = new CreditNote();
-                InvoiceDocumentReference idr = new InvoiceDocumentReference();
-                DocumentoRelacionado drelacionado = new DocumentoRelacionado();
-                drelacionado.NroDocumento = "nro factura anular";
-                drelacionado.TipoDocumento = "03";
-                doc.Relacionados.Add(drelacionado);
-                var creditNote = Generador.GenerarCreditNote(doc);
+                //var rde = Generador.GenerarSummaryDocuments(rd);
+                //CreditNote cn = new CreditNote();
+                //InvoiceDocumentReference idr = new InvoiceDocumentReference();
+                //DocumentoRelacionado drelacionado = new DocumentoRelacionado();
+                //drelacionado.NroDocumento = "nro factura anular";
+                //drelacionado.TipoDocumento = "03";
+                //doc.Relacionados.Add(drelacionado);
+                //var creditNote = Generador.GenerarCreditNote(doc);
                 // fin consultar factura
 
 
@@ -336,9 +346,54 @@ namespace  iAlbusaForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(cboTipoDoc.Text);
+            string codigoTipoDoc;
+            switch (cboTipoDoc.SelectedIndex)
+            {
+                case 0:
+                    codigoTipoDoc = "01";
+                    break;
+                case 1:
+                    codigoTipoDoc = "03";
+                    break;
+                case 2:
+                    codigoTipoDoc = "07";
+                    break;
+                case 3:
+                    codigoTipoDoc = "08";
+                    break;
+                case 4:
+                    codigoTipoDoc = "20";
+                    break;
+                case 5:
+                    codigoTipoDoc = "40";
+                    break;
+                case 6:
+                    codigoTipoDoc = "RC";
+                    break;
+                case 7:
+                    codigoTipoDoc = "RA";
+                    break;
+                default:
+                    codigoTipoDoc = "01";
+                    break;
+            }
+
+
+
+
+
+
+            if (codigoTipoDoc == "01") {
+
+            }
+            else {
+                dataGridView1.DataSource = _dkddkd.CargaCliente(dtp_a.Value, dtp_b.Value);
+                MessageBox.Show(dataGridView1.RowCount.ToString());
+            }
+
+
             
-            dataGridView1.DataSource = _dkddkd.CargaCliente(dtp_a.Value,dtp_b.Value);
-            MessageBox.Show(dataGridView1.RowCount.ToString());
           //  MessageBox.Show(dtp_a.Format("dd/mm/aa");
 
 

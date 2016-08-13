@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Boleta.cs" />
     <Compile Include="ClsConexion.cs" />
+    <Compile Include="facturacion_log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
