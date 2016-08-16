@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iAlbusaForm", "iAlbusaForm\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{454F3EE9-D860-40DC-95E7-BF40171B5F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iAlbusaHomologacion", "C:\Users\Administrador\Downloads\facturacionelectronicasunat-master (3)\facturacionelectronicasunat-master\Firmado Sunat\ErickOrlando.FirmadoSunatWin\iAlbusaHomologacion.csproj", "{B837B42F-7123-432A-BC65-79E9DBE475A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iAlbusaHomologacion", "iAlbusaHomologacion\iAlbusaHomologacion.csproj", "{B837B42F-7123-432A-BC65-79E9DBE475A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "C:\Users\Administrador\Downloads\facturacionelectronicasunat-master (3)\facturacionelectronicasunat-master\Firmado Sunat\OpenInvoicePeru.Datos\Datos.csproj", "{562D08A8-ED00-4E21-9F48-3E391AAD575E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{562D08A8-ED00-4E21-9F48-3E391AAD575E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
