@@ -321,7 +321,7 @@ namespace ialbusacpr.Business
                 _detralle.UnidadMedida = "KG";
                 _detralle.Impuesto = 18;
                 _detralle.TipoImpuesto = "10";
-                _detralle.TotalVenta = 100;
+                _detralle.TotalVenta = 100; //vetenta toto la sumatoria igv gravadas etc
                 _detralle.Suma = 100;
 
                 doc.Items.Add(_detralle);
@@ -345,7 +345,7 @@ namespace ialbusacpr.Business
         public Boolean CargaFactura(DocumentoElectronico doc)
         {
             
-            /*
+            
             OracleConnection Cn = new OracleConnection();
 
             // var doc = (DocumentoElectronico)_documento.Clone();
@@ -354,55 +354,7 @@ namespace ialbusacpr.Business
                 Cn.ConnectionString = "Data Source=maximus;Persist Security Info=True;User ID=db_albusa;Password=db_albusa;Unicode=True";
                 Cn.Open();
             }
-            String sSQL = " SELECT d.documentoid,  (to_char(d.fecha, 'yyyy') || '-' || to_char(d.fecha, 'mm') || '-' || to_char(d.fecha, 'dd')) as IssueDate, "//- 1 Fecha de emision
- + " 'INVERSIONES ALBUSA SAC' as RegistrationName, "// 2 Apellidos nombres  denominacion o razon social
- + "'20484245249' as CustomerAssignedAccountID, "//5 RUC
- + "'6' as AdditionalAccountID,"//5 
- + "'03' as InvoiceTypeCode ,"//6 Tipo de documento(Boleta)
- + "'B' || c.seriedocumentos || '-' || d.numero as ID,"// 7 Numeracion , conformada por serie y numero correlativo
- + "cl.dni as CustomerAssignedAccountID,"// 8 Tipo y (numero) de documento de identidad del adquiriente o usuario
- + "'1' as AdditionalAccountID,"//  8 (Tipo) y numero de documento de identidad del adquiriente o usuario
- + "trim(cl.apellidocliente) || ' ' || trim(cl.nombrecliente) as RegistrationName," //9 Apellidos y nombres de adquiriente o usuario
-                                                                                    //10 Direccion en el pais adquiriente o lugar de destino 
-  + "'1' as unitCode,"//11  Unidad de medidda por Item
-  + "'1' as InvoicedQuantity,"//12 cantidad de unidades  por item 
-  + "'PAGO DE CUOTA DE CREDITO' || '  ' || cr.codigocredito as Description , "//13  DEscrIPCION DETALLA DEL SERVICIO PRESTADO bien vendido 
-  + "'0.00', "//14 precio de venta unitario por item y codigo
- + " d.montototal as ID ,"//15 total valo de ventas gravadas 
-  + "p.montocapital as PayableAmount,"//16  total valor venta operaciones inafectas
-                                      //17
-  + "p.montointeres," //18
-                      //19
-                      //20
-                      //21
-                      //22
-      + "       p.montototal as currencyID,"//23
-  + "'PEN' as DocumentCurrencyCode,"//24
-                                    //25
-                                    //26
-      + "       p.montoimpuesto as ,"//27
-                                     //28
-                                     //29
-                                     //30
-          + "   p.montointeres,"//31
-   + "p.montointeres"//32
-                     //33
-                     //34
-                     //35
-                     //36
-                     //37
-                     //38
-                     //39
-                     //40
-                     //41
-                     //42
-
-         + "    FROM       pagos p, documentos d,  tiposdocumento td, cajas c,  clientes cl, creditos cr,  tipo_documento td2,"
-   + " tipo_cambio tc WHERE p.pagoid = d.pagoid(+)  AND d.tipodocumentoid = td.tipodocumentoid(+)  AND td.tipo_doc = td2.id_tipodoc(+)"
-     + "   AND td.cajaid = c.cajaid(+)  AND p.creditoid = cr.creditoid(+)  AND cr.clienteid = cl.clienteid(+) and trunc(d.fechareal) = trunc(tc.fechaingreso)  "
-     + "    AND c.seriedocumentos is not null  "
-     + " and  d.numero='2247370'  "
-     + "    order by d.documentoid asc ";
+            String sSQL = "";
 
             OracleCommand Cmd = new OracleCommand();
             OracleDataAdapter Dap = new OracleDataAdapter();
@@ -410,13 +362,7 @@ namespace ialbusacpr.Business
             Cmd.CommandType = CommandType.Text;
             Cmd.Connection = Cn;
 
-            ///llenar datagridview
-            //Dap.SelectCommand = Cmd;
-            //DataTable Dt = new DataTable();
-            //Dap.Fill(Dt);
-            //return Dt;
-
-            /// 
+            
 
  
 
@@ -468,23 +414,7 @@ namespace ialbusacpr.Business
                 doc.Emisor.Distrito = "20";
                 doc.Emisor.Direccion = "Jr junin";
                 doc.Emisor.Departamento = "20";
-                //  doc.Items.Add()
-                _detralle.Cantidad = 1;
-                _detralle.CodigoItem = "";
-                _detralle.Descripcion = "";
-                _detralle.Id = 1;
-                _detralle.Impuesto = 1;
-                _detralle.ImpuestoSelectivo = 1;
-                _detralle.OtroImpuesto = 1;
-                _detralle.PrecioReferencial = 1;
-                _detralle.PrecioUnitario = 1;
-             //   _detralle.Suma =1;
-                _detralle.TipoImpuesto = "2";
-                _detralle.TipoPrecio = "1";
-                _detralle.TotalVenta = 12;
-                _detralle.UnidadMedida = "";*/
-            //   datos de prueba
-
+                 
 
             doc.Emisor.NroDocumento = "20484205249";
                 doc.Emisor.TipoDocumento = "6";
@@ -512,23 +442,23 @@ namespace ialbusacpr.Business
                 doc.TotalIgv = 180;
                 doc.TotalVenta = 118;
                 doc.Gravadas = 100;
-                    
 
 
 
-               
 
-                //
+
+
+
 
 
                 return true;
-            //}
-            //else
-            //{
-            //    Dr.Close();
+            }
+            else
+            {
+                Dr.Close();
 
-            //    return false;
-            //}  
+                return false;
+            }
         }
 
         /// <summary>
