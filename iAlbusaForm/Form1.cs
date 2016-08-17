@@ -187,23 +187,7 @@ namespace  iAlbusaForm
                 using (var conexion = new ConexionSunat(txtNroRuc.Text, txtUsuarioSol.Text,
                     txtClaveSol.Text, rbRetenciones.Checked ? "ServicioSunatRetenciones" : string.Empty))
                 {
-                    //var byteArray = File.ReadAllBytes("D:\\42544373esteno-03-B003-2247370.xml");
-
-                    //Cursor = Cursors.WaitCursor;
-
-                    //// Firmamos el XML.
-                    //var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
-                    //// Le damos un nuevo nombre al archivo
-                    //var nombreArchivo = string.Format("{0}-{1}-{2}", txtNroRuc.Text, codigoTipoDoc,
-                    //    "B003-2247370");
-                    //// Escribimos el archivo XML ya firmado en una nueva ubicación.
-                    //using (var fs = File.Create(string.Format("{0}.xml", nombreArchivo)))
-                    //{
-                    //    var byteFirmado = Convert.FromBase64String(tramaFirmado);
-                    //    fs.Write(byteFirmado, 0, byteFirmado.Length);
-                    //}
-
-                    // Ahora lo empaquetamos en un ZIP.
+                    
                     var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
 
                     if (rbResumen.Checked)
