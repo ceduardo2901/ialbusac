@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ClsConvertNumberToLiteral.cs" />
     <Compile Include="ConexionSunat.cs" />
     <Compile Include="Constantes\Respuestas.cs" />
     <Compile Include="Estructuras\AccountingSupplierParty.cs" />
