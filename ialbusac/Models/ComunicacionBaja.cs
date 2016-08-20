@@ -8,5 +8,6 @@ namespace ialbusacpr.ialbusac.Models
     public class ComunicacionBaja : DocumentoResumen
     {
         public List<DocumentoBaja> Bajas { get; set; }
+
     }
 }
