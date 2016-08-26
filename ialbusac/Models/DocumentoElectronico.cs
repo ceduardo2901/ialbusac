@@ -53,7 +53,8 @@ namespace ialbusacpr.ialbusac.Models
         {
             Emisor = new Contribuyente
             {
-                TipoDocumento = "6" // RUC.
+                TipoDocumento = "6", // RUC.
+               
             };
             Receptor = new Contribuyente
             {
