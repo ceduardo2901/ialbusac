@@ -9,5 +9,12 @@ namespace ialbusacpr.ialbusac.Models
     {
         public List<DocumentoBaja> Bajas { get; set; }
 
+
+
+
+        public ComunicacionBaja(){
+            Bajas = new List<DocumentoBaja>();
+            }
+
     }
 }
