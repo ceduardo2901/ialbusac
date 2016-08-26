@@ -16,6 +16,7 @@ namespace ialbusacpr.ialbusac
 
         private const string CommonExtensionComponents =
             "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2";
+     
 
         /// <summary>
         /// Cadena Base64 del certificado Digital
@@ -198,7 +199,7 @@ namespace ialbusacpr.ialbusac
 
                 keyInfo.AddClause(x509Data);
                 xmlSignature.KeyInfo = keyInfo;
-                xmlSignature.Id = "SignatureErickOrlando";
+                xmlSignature.Id = "SignatureIa";
                 signedXml.ComputeSignature();
 
                 // Recuperamos el valor Hash de la firma para este documento.

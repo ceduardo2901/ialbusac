@@ -1,4 +1,5 @@
-﻿namespace ialbusacpr.ialbusac.Constantes
+﻿
+namespace ialbusacpr.ialbusac.Constantes
 {
     public static class ErrorGenerico
     {

@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://service.gem.factura.comppago.registro.servicio.sunat.gob.pe/" xmlns:ns1="http://service.sunat.gob.pe" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://service.gem.factura.comppago.registro.servicio.sunat.gob.pe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:import namespace="http://service.sunat.gob.pe" location="billService?ns1.wsdl" />
-  <wsdl:types />
-  <wsdl:binding name="BillServicePortBinding" type="ns1:billService">
-    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" />
+<wsdl:definitions xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://service.gem.factura.comppago.registro.servicio.sunat.gob.pe/" xmlns:ns1="http://service.sunat.gob.pe" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://service.sunat.gob.pe" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="billService.xsd2.xsd" namespace="http://service.sunat.gob.pe" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getStatus">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:getStatus" />
+  </wsdl:message>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:getStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendBill">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:sendBill" />
+  </wsdl:message>
+  <wsdl:message name="sendBillResponse">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:sendBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendPack">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:sendPack" />
+  </wsdl:message>
+  <wsdl:message name="sendPackResponse">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:sendPackResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendSummary">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:sendSummary" />
+  </wsdl:message>
+  <wsdl:message name="sendSummaryResponse">
+    <wsdl:part xmlns:xsns="http://service.sunat.gob.pe" name="parameters" element="xsns:sendSummaryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="billService">
     <wsdl:operation name="getStatus">
-      <soap11:operation soapAction="urn:getStatus" style="document" />
-      <wsdl:input name="getStatusRequest">
-        <soap11:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="getStatusResponse">
-        <soap11:body use="literal" />
-      </wsdl:output>
+      <wsdl:input name="getStatusRequest" message="ns1:getStatus" />
+      <wsdl:output name="getStatusResponse" message="ns1:getStatusResponse" />
     </wsdl:operation>
     <wsdl:operation name="sendBill">
-      <soap11:operation soapAction="urn:sendBill" style="document" />
-      <wsdl:input name="sendBillRequest">
-        <soap11:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="sendBillResponse">
-        <soap11:body use="literal" />
-      </wsdl:output>
+      <wsdl:input name="sendBillRequest" message="ns1:sendBill" />
+      <wsdl:output name="sendBillResponse" message="ns1:sendBillResponse" />
     </wsdl:operation>
     <wsdl:operation name="sendPack">
-      <soap11:operation soapAction="urn:sendPack" style="document" />
-      <wsdl:input name="sendPackRequest">
-        <soap11:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="sendPackResponse">
-        <soap11:body use="literal" />
-      </wsdl:output>
+      <wsdl:input name="sendPackRequest" message="ns1:sendPack" />
+      <wsdl:output name="sendPackResponse" message="ns1:sendPackResponse" />
     </wsdl:operation>
     <wsdl:operation name="sendSummary">
-      <soap11:operation soapAction="urn:sendSummary" style="document" />
-      <wsdl:input name="sendSummaryRequest">
-        <soap11:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="sendSummaryResponse">
-        <soap11:body use="literal" />
-      </wsdl:output>
+      <wsdl:input name="sendSummaryRequest" message="ns1:sendSummary" />
+      <wsdl:output name="sendSummaryResponse" message="ns1:sendSummaryResponse" />
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="billService">
-    <wsdl:port name="BillServicePort" binding="ns0:BillServicePortBinding">
-      <soap11:address location="https://e-beta.sunat.gob.pe:443/ol-ti-itcpfegem-beta/billService" />
-    </wsdl:port>
-    <wsdl:port name="BillServicePort.1" binding="ns0:BillServicePortBinding">
-      <soap11:address location="https://e-beta.sunat.gob.pe:443/ol-ti-itcpfegem-beta/billService" />
-    </wsdl:port>
-  </wsdl:service>
+  </wsdl:portType>
 </wsdl:definitions>

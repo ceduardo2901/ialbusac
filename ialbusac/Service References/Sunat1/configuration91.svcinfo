@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="SPXIh7hY3wiwHAA7fYUntOUzfek=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="8APLnXeYFNepJ40tEjc/kzTelkY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BillServicePortBinding">
       <properties>
@@ -330,10 +330,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BillServicePort" contract="Sunat1.billService" bindingType="basicHttpBinding" address="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService" bindingConfiguration="BillServicePortBinding">
+    <endpoint name="BillServicePort" contract="Sunat1.billService" bindingType="basicHttpBinding" address="https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService" bindingConfiguration="BillServicePortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://e-beta.sunat.gob.pe:443/ol-ti-itcpfegem-beta/billService</serializedValue>
+          <serializedValue>https://e-beta.sunat.gob.pe:443/ol-ti-itemision-otroscpe-gem-beta/billService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -415,10 +415,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BillServicePort.1" contract="Sunat1.billService" bindingType="basicHttpBinding" address="https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService" bindingConfiguration="BillServicePortBinding1">
+    <endpoint name="BillServicePort.1" contract="Sunat1.billService" bindingType="basicHttpBinding" address="https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService" bindingConfiguration="BillServicePortBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://e-beta.sunat.gob.pe:443/ol-ti-itcpfegem-beta/billService</serializedValue>
+          <serializedValue>https://e-beta.sunat.gob.pe:443/ol-ti-itemision-otroscpe-gem-beta/billService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

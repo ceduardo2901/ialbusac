@@ -9,5 +9,14 @@ namespace ialbusacpr.ialbusac.Models
         public string IdDocumento { get; set; }
         public string FechaEmision { get; set; }
         public string FechaReferencia { get; set; }
+
+        public DocumentoResumen() {
+
+            Emisor = new Contribuyente
+            {
+                TipoDocumento = "6" // RUC.
+            };
+        }
+
     }
 }
