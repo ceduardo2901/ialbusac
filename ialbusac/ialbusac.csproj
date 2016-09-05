@@ -59,6 +59,14 @@
     <Compile Include="ClsConvertNumberToLiteral.cs" />
     <Compile Include="ConexionSunat.cs" />
     <Compile Include="Constantes\Respuestas.cs" />
+    <Compile Include="DataSetReportes\dt1.cs">
+      <DependentUpon>dt1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetReportes\dt1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dt1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Estructuras\AccountingSupplierParty.cs" />
     <Compile Include="Estructuras\AdditionalInformation.cs" />
     <Compile Include="Estructuras\AdditionalMonetaryTotal.cs" />
@@ -149,8 +157,21 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="DataSetReportes\dt1.xsc">
+      <DependentUpon>dt1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReportes\dt1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dt1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetReportes\dt1.xss">
+      <DependentUpon>dt1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Service References\Sunat1\billService.wsdl" />
     <None Include="Service References\Sunat1\billService.xsd">

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="datauno" msprop:Generator_TableClassName="dataunoDataTable" msprop:Generator_TableVarName="tabledatauno" msprop:Generator_RowChangedName="dataunoRowChanged" msprop:Generator_TablePropName="datauno" msprop:Generator_RowDeletingName="dataunoRowDeleting" msprop:Generator_RowChangingName="dataunoRowChanging" msprop:Generator_RowEvHandlerName="dataunoRowChangeEventHandler" msprop:Generator_RowDeletedName="dataunoRowDeleted" msprop:Generator_RowClassName="dataunoRow" msprop:Generator_UserTableName="datauno" msprop:Generator_RowEvArgName="dataunoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Dia" msprop:Generator_ColumnVarNameInTable="columnDia" msprop:Generator_ColumnPropNameInRow="Dia" msprop:Generator_ColumnPropNameInTable="DiaColumn" msprop:Generator_UserColumnName="Dia" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="hjju" msprop:Generator_TableClassName="hjjuDataTable" msprop:Generator_TableVarName="tablehjju" msprop:Generator_RowChangedName="hjjuRowChanged" msprop:Generator_TablePropName="hjju" msprop:Generator_RowDeletingName="hjjuRowDeleting" msprop:Generator_RowChangingName="hjjuRowChanging" msprop:Generator_RowEvHandlerName="hjjuRowChangeEventHandler" msprop:Generator_RowDeletedName="hjjuRowDeleted" msprop:Generator_RowClassName="hjjuRow" msprop:Generator_UserTableName="hjju" msprop:Generator_RowEvArgName="hjjuRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -14,8 +14,7 @@ namespace ialbusacpr.ialbusac
     public class Serializador
     {
 
-        private const string CommonExtensionComponents =
-            "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2";
+        private const string CommonExtensionComponents = "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2";
      
 
         /// <summary>
@@ -64,7 +63,8 @@ namespace ialbusacpr.ialbusac
             var serializer = new XmlSerializer(typeof(T));
             var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
 
-            using (var writer = new StreamWriter(filename))
+            using (var writer = new StreamWriter(filename, true, Encoding.GetEncoding("ISO-8859-1")))
+               
             {
                 serializer.Serialize(writer, request);
             }

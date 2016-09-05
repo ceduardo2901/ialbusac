@@ -18,5 +18,17 @@ namespace ialbusacpr.ialbusac.Models
         public decimal Inafectas { get; set; }
         public decimal Exportacion { get; set; }
         public decimal Gratuitas { get; set; }
+
+        public GrupoResumen()
+        {
+
+            Moneda = "PEN";
+
+        }
+
+
+
+
+
     }
 }
