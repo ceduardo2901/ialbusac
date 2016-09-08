@@ -226,5 +226,78 @@ namespace ialbusacpr.ialbusac
             return resultado;
         }
 
+
+        /*  obtener en hash para el documento sin firmar    */
+
+        public void ObtenerHash(string tramaXml)
+        {
+
+            // Vamos a firmar el XML con la ruta del certificado que está como serializado.
+
+          
+
+            RutaCertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("D:\\InversionesAlbusa\\Certificado_Sunat_PFX_InversionesAlbusa.pfx"));
+             PasswordCertificado="3EDCDERFVFF";
+            var certificate = new X509Certificate2();
+            certificate.Import(Convert.FromBase64String(RutaCertificadoDigital),
+                PasswordCertificado, X509KeyStorageFlags.MachineKeySet);
+
+            var xmlDoc = new XmlDocument();
+
+          
+
+            using (var documento = new MemoryStream(Convert.FromBase64String(tramaXml)))
+            {
+                xmlDoc.PreserveWhitespace = true;
+                xmlDoc.Load(documento);
+                int tipo;
+
+               
+                    tipo = 1;
+                
+
+                var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", CommonExtensionComponents)
+                    .Item(tipo);
+                if (nodoExtension == null)
+                    throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");
+                nodoExtension.RemoveAll();
+
+                // Creamos el objeto SignedXml.
+                var signedXml = new SignedXml(xmlDoc) { SigningKey = (RSA)certificate.PrivateKey };
+                signedXml.SigningKey = certificate.PrivateKey;
+                var xmlSignature = signedXml.Signature;
+
+                var env = new XmlDsigEnvelopedSignatureTransform();
+
+                var reference = new Reference(string.Empty);
+                reference.AddTransform(env);
+                xmlSignature.SignedInfo.AddReference(reference);
+
+                var keyInfo = new KeyInfo();
+                var x509Data = new KeyInfoX509Data(certificate);
+
+                x509Data.AddSubjectName(certificate.Subject);
+
+                keyInfo.AddClause(x509Data);
+                xmlSignature.KeyInfo = keyInfo;
+                xmlSignature.Id = "SignatureIa";
+                signedXml.ComputeSignature();
+
+                // Recuperamos el valor Hash de la firma para este documento.
+                if (reference.DigestValue != null)
+                    DigestValue = Convert.ToBase64String(reference.DigestValue);
+
+               
+            }
+
+            
+        }
+
+
+
+
+
+        /// fin del hash
+
     }
 }

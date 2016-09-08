@@ -48,6 +48,7 @@ namespace ialbusacpr.ialbusac.Models
         public ObservableCollection<DetalleDocumento> Items { get; set; }
         public DatosGuia DatosGuiaTransportista { get; set; }
         public List<Discrepancia> Discrepancias { get; set; }
+        public string DigestValue { get; set; }
 
         public DocumentoElectronico()
         {
