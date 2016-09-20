@@ -16,5 +16,11 @@ namespace ialbusacpr.iAlbusaHomologacion
         {
             InitializeComponent();
         }
+
+        private void Factura2_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

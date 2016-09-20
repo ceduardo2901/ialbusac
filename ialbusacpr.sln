@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iAlbusaHomologacion", "iAlb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{562D08A8-ED00-4E21-9F48-3E391AAD575E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iAlbusaApiRest", "iAlbusaApiRest\iAlbusaApiRest.csproj", "{A3575E25-AA28-4D3D-8451-FE1DFA196354}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{562D08A8-ED00-4E21-9F48-3E391AAD575E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{562D08A8-ED00-4E21-9F48-3E391AAD575E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{562D08A8-ED00-4E21-9F48-3E391AAD575E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3575E25-AA28-4D3D-8451-FE1DFA196354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3575E25-AA28-4D3D-8451-FE1DFA196354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3575E25-AA28-4D3D-8451-FE1DFA196354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3575E25-AA28-4D3D-8451-FE1DFA196354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

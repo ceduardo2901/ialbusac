@@ -61,7 +61,32 @@ namespace ialbusacpr.ialbusac
 
 
             var serializer = new XmlSerializer(typeof(T));
-            var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
+            // String fechanew = Convert.ToString(dtpFecha.Value.Year) + "" + Convert.ToString(dtpFecha.Value.Month) + "" + Convert.ToString(dtpFecha.Value.Day);
+            DateTime Hoy = DateTime.Today;
+
+            string fecha_actual = Hoy.ToString("yyyyMMdd");
+
+            string reportes = @"D:\"+ fecha_actual;
+
+            try
+            {
+
+                //si no existe la carpeta reportes la creamos
+                if (!(System.IO.Directory.Exists(reportes)))
+                {
+                    System.IO.Directory.CreateDirectory(reportes);
+                }
+
+            }
+            catch (Exception errorC)
+            {
+                MessageBox.Show(errorC.Message,
+                         "Error al crear fichero temporal",
+                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+        //    var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
+            var filename = $"{reportes}\\{nombreArchivo}.xml";
 
             using (var writer = new StreamWriter(filename, true, Encoding.GetEncoding("ISO-8859-1")))
                
@@ -176,7 +201,7 @@ namespace ialbusacpr.ialbusac
                     tipo = 0;
 
                 var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", CommonExtensionComponents)
-                    .Item(tipo);
+                    .Item(0);
                 if (nodoExtension == null)
                     throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");
                 nodoExtension.RemoveAll();
