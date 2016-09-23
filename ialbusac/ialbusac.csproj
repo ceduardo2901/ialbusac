@@ -58,6 +58,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ClsConvertNumberToLiteral.cs" />
     <Compile Include="ConexionSunat.cs" />
+    <Compile Include="ConexionSunatApi.cs" />
     <Compile Include="Constantes\Respuestas.cs" />
     <Compile Include="DataSetReportes\dt1.cs">
       <DependentUpon>dt1.xsd</DependentUpon>
@@ -146,6 +147,7 @@
     <Compile Include="PasswordDigestMessageInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializador.cs" />
+    <Compile Include="SerializadorApi.cs" />
     <Compile Include="Service References\Sunat1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -43,6 +43,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ialbusac, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ialbusac\bin\Debug\ialbusac.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>net20\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -116,6 +123,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConsultarTicketController.cs" />
+    <Compile Include="Controllers\EnviarDocumentoController.cs" />
+    <Compile Include="Controllers\EnviarResumenController.cs" />
+    <Compile Include="Controllers\FirmarController.cs" />
+    <Compile Include="Controllers\GenerarComunicacionBajaController.cs" />
+    <Compile Include="Controllers\GenerarFacturaController.cs" />
+    <Compile Include="Controllers\GenerarNotaCreditoController.cs" />
+    <Compile Include="Controllers\GenerarNotaDebitoController.cs" />
+    <Compile Include="Controllers\GenerarResumenDiarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

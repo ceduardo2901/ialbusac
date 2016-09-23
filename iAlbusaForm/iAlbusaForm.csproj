@@ -42,8 +42,7 @@
     <ManifestKeyFile>iAlbusaForm_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Business">
       <HintPath>..\Business\bin\Debug\Business.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
