@@ -7,7 +7,9 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Ionic.Zip;
-using   ialbusacpr.ialbusac.Estructuras;
+using ialbusacpr.ialbusac.Estructuras;
+using System.Windows.Forms;
+
 namespace ialbusacpr.ialbusac
 {
     public class SerializadorApi
@@ -48,15 +50,57 @@ namespace ialbusacpr.ialbusac
         /// <returns>Devuelve la ruta del Archivo generado</returns>
         public string GenerarXmlFisico<T>(T request, string nombreArchivo)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
+            //var serializer = new XmlSerializer(typeof(T));
+            //var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
 
-            using (var writer = new StreamWriter(filename))
+            //using (var writer = new StreamWriter(filename))
+            //{
+            //    serializer.Serialize(writer, request);
+            //}
+
+            //return filename;
+            //**************Comentado para poder crear carpetas
+            var serializer = new XmlSerializer(typeof(T));
+            // String fechanew = Convert.ToString(dtpFecha.Value.Year) + "" + Convert.ToString(dtpFecha.Value.Month) + "" + Convert.ToString(dtpFecha.Value.Day);
+            DateTime Hoy = DateTime.Today;
+
+            string fecha_actual = Hoy.ToString("yyyyMMdd");
+
+            string reportes = @"D:\" + fecha_actual;
+
+            try
+            {
+
+                //si no existe la carpeta reportes la creamos
+                if (!(System.IO.Directory.Exists(reportes)))
+                {
+                    System.IO.Directory.CreateDirectory(reportes);
+                }
+
+            }
+            catch (Exception errorC)
+            {
+                MessageBox.Show(errorC.Message,
+                         "Error al crear fichero temporal",
+                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            //    var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
+            var filename = $"{reportes}\\{nombreArchivo}.xml";
+
+            using (var writer = new StreamWriter(filename, true, Encoding.GetEncoding("ISO-8859-1")))
+
             {
                 serializer.Serialize(writer, request);
             }
 
             return filename;
+
+
+
+
+
+
         }
         /// <summary>
         /// Genera el XML basado en una clase con el atributo Serializable
@@ -92,14 +136,37 @@ namespace ialbusacpr.ialbusac
         /// <returns>Devuelve Cadena Base64 del archizo ZIP</returns>
         public string GenerarZip(string tramaXml, string nombreArchivo)
         {
+            //var memOrigen = new MemoryStream(Convert.FromBase64String(tramaXml));
+            //var memDestino = new MemoryStream();
+            //string resultado;
+
+            //using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
+            //{
+            //    fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
+            //    fileZip.Save(memDestino);
+            //    resultado = Convert.ToBase64String(memDestino.ToArray());
+            //}
+            //// Liberamos memoria RAM.
+            //memOrigen.Close();
+            //memDestino.Close();
+
+            //return resultado;
+
+            //cometado para cambiar a version mejorada que controla la generacion del zip
             var memOrigen = new MemoryStream(Convert.FromBase64String(tramaXml));
             var memDestino = new MemoryStream();
             string resultado;
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Winrar| .rar";
+            // save.ShowDialog();
+            //  save.FileName = "D:\\";
 
             using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
             {
                 fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
                 fileZip.Save(memDestino);
+                //   fileZip.Save($"{nombreArchivo}.zip");
+                fileZip.Dispose();
                 resultado = Convert.ToBase64String(memDestino.ToArray());
             }
             // Liberamos memoria RAM.
@@ -107,6 +174,14 @@ namespace ialbusacpr.ialbusac
             memDestino.Close();
 
             return resultado;
+
+
+
+
+
+
+
+
         }
 
         public string FirmarXml(string tramaXml)
@@ -157,7 +232,7 @@ namespace ialbusacpr.ialbusac
 
                 keyInfo.AddClause(x509Data);
                 xmlSignature.KeyInfo = keyInfo;
-                xmlSignature.Id = "SignatureErickOrlando";
+                xmlSignature.Id = "SignatureIa";
                 signedXml.ComputeSignature();
 
                 // Recuperamos el valor Hash de la firma para este documento.
